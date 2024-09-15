@@ -1,0 +1,64 @@
+.whatsapp-button {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  width: 280px; /* Ajustez la largeur ici */
+  position: absolute;
+  bottom: 10px; /* Positionner le bouton en bas */
+  right: 0px;  /* Positionner le bouton à droite */
+}
+
+.whatsapp-button a {
+  display: block;
+  position: relative;
+  padding: 1rem;
+  color: #00A783;
+  text-decoration: none;
+  font-size: 1.2rem; /* Augmenter la taille de police */
+  font-weight: bold; /* Rendre le texte gras */
+  border: 2px solid #00A783; /* Ajout de la bordure autour du bouton */
+  border-radius: 8px; /* Arrondir les bords */
+  transition: color 0.5s, background-color 0.5s, border-color 0.5s;
+  z-index: 10;
+}
+
+.whatsapp-button:hover a {
+  color: white;
+  background-color: #00A783; /* Changer la couleur de fond au survol */
+  border-color: transparent; /* Faire disparaître la bordure au survol */
+}
+
+.whatsapp-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #00A783;
+  transition: width 0.5s;
+  z-index: 0;
+  border-radius: 8px; /* Conserver le border-radius pour les côtés gauche et droit */
+}
+
+.whatsapp-button:hover::before {
+  width: 100%; /* Faire s'étendre le remplissage à 100% de la largeur */
+}
+
+.whatsapp-button a::after {
+  content: "→";
+  position: absolute;
+  right: 30px; /* Positionner la flèche à droite */
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s, right 0.5s;
+}
+
+.whatsapp-button:hover a::after {
+  opacity: 1;
+  right: 30px; /* Garder la flèche à droite lors du survol */
+}
