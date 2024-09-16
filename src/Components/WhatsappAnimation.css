@@ -2,12 +2,14 @@
   position: relative;
   overflow: hidden;
   padding: 0;
-  margin: 0;
+  marginRight: 100px;
+  
   display: inline-block;
   width: 280px; /* Ajustez la largeur ici */
   position: absolute;
   bottom: 10px; /* Positionner le bouton en bas */
   right: 0px;  /* Positionner le bouton à droite */
+  
 }
 
 .whatsapp-button a {

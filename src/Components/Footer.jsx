@@ -59,7 +59,7 @@ const Footer = () => {
             © Copyright 2024. All Rights Reserved.
           </p>
 
-          <div class="flex -mx-2">
+          <div class="flex -mx-2 mt-2 sm:mt-0">
             <a
               href="https://www.instagram.com/galerie.lesm.dushop"
               class="mx-2  text-gray-600 transition-colors duration-300 hover:text-pink-500 dark:text-gray-300 dark:hover:text-pink-400"

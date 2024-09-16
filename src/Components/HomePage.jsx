@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getDocs, collection, query, orderBy, limit } from "firebase/firestore";
-import { db, storage } from "../util/Firebase"; // Ensure the path is correct
+import { db, storage } from "../util/Firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 import "./HomePage.css"; // Add necessary custom styles if any
 
@@ -14,7 +14,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const categoriesCollection = collection(db, "categories"); // Fetch categories collection
+        const categoriesCollection = collection(db, "categories");
         const categoriesSnapshot = await getDocs(categoriesCollection);
         const categoriesList = [];
 
@@ -120,7 +120,7 @@ const HomePage = () => {
                     src={category.imageUrl}
                     className="d-block w-100"
                     alt={category.name}
-                    style={{ height: "400px", objectFit: "cover" }}
+                    style={{ height: "500px", objectFit: "cover" }}
                   />
                   <div
                     className="carousel-caption d-none d-md-block"
@@ -194,39 +194,41 @@ const HomePage = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <br />
 
       {/* Featured Products Section */}
-
       <section className="mt-8">
-        <h2 className="text-2xl font-extrabold text-gray-900 sm:text-4xl text-center mb-6">
-          Featured Products
-        </h2>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <li key={product.id} className="bg-white rounded shadow-sm p-4">
-              <Link to={`/product/${product.id}`}>
-                <div className="flex justify-center items-center h-[200px]">
-                  {" "}
-                  {/* New div to center the image */}
-                  <img
-                    src={product.imageUrl || "placeholder.jpg"}
-                    alt={product.name}
-                    className="h-[150px] w-[150px] object-cover transition duration-500 hover:scale-105"
-                  />
-                </div>
-              </Link>
-              <div className="mt-2 text-center">
-                {" "}
-                {/* Centering text as well */}
-                <h3 className="text-sm font-semibold text-gray-800">
-                  {product.name}
-                </h3>
-                <p className="text-lg text-gray-600">{product.price} DH</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+  <h2 className="text-2xl font-extrabold text-gray-900 sm:text-4xl text-center mb-6">
+    Featured Products
+  </h2>
+
+  {/* Grid layout for both mobile and PC */}
+  <ul className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {featuredProducts.map((product) => (
+      <li key={product.id} className="bg-white rounded-lg shadow-sm p-4">
+        <Link to={`/product/${product.id}`}>
+          <div className="flex justify-center items-center h-[150px] md:h-[200px]">
+            {/* Image handling for both mobile and PC */}
+            <img
+              src={product.imageUrl || "placeholder.jpg"}
+              alt={product.name}
+              className="h-[100px] w-[100px] md:h-[150px] md:w-[150px] object-cover transition duration-500 hover:scale-105"
+            />
+          </div>
+        </Link>
+        {/* Centered text for product name and price */}
+        <div className="mt-2 text-center">
+          <h3 className="text-xs md:text-sm font-semibold text-gray-800">
+            {product.name}
+          </h3>
+          <p className="text-sm md:text-lg text-gray-600">{product.price} DH</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+
       <div style={{ height: "50px" }}></div>
     </div>
   );
